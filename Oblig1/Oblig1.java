@@ -170,43 +170,35 @@ sammenlikniger og ingen ombyttinger.
 
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int n) {
-
-        //public static void rotasjon2(char[] a, int n) {
-
-            if (a.length != 0) {
-                char[] arr = a;
-                if (n > 0) {
-                    for (int i = 0; i < n; i++) {
-                        int j;
-
-                        Character last;
-                        last = arr[arr.length - 1];
-
-                        for (j = arr.length - 1; j > 0; j--) {
-                            arr[j] = arr[j - 1];
-
-                        }
-                        arr[0] = last;
-                    }
-                } else if (n < 0) {
-                    for (int i = 0; i > n; i--) {
-                    /*
-                    Rotering mot venstre, har ikke helt fått det til
-
+        if (a.length != 0) {
+            char[] arr = a;
+            if (n > 0) {
+                for (int i = 0; i < n; i++) {
                     int j;
 
-                    Character first;
-                    first = arr[arr.length -1];
+                    Character last;
+                    last = arr[arr.length - 1];
 
-                    for (j = arr.length + 1; j > 0; j++) {
-                        arr[j] = arr[j + 1];
+                    for (j = arr.length - 1; j > 0; j--) {
+                        arr[j] = arr[j - 1];
+
                     }
-                    arr[0] = first;*/
+                    arr[0] = last;
+                }
+            } else if (n < 0) {
+                for (int i = 0; i > n; i--) {
+                    for (int i = 0; i < n; i++) {
+                        int j, first;
+                        first = arr[0];
 
+                        for (j = 0; j < arr.length - 1; j++) {
+                            arr[j] = arr[j + 1];
+                        }
+                        arr[j] = first;
                     }
                 }
             }
-
+        }
     }
 
     ///// Oppgave 7 //////////////////////////////////////
