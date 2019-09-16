@@ -184,7 +184,7 @@ sammenlikniger og ingen ombyttinger.
 
                     }
                     arr[0] = last;
-                }
+                } /*
             } else if (n < 0) {
                 for (int i = 0; i > n; i--) {
                     for (int i = 0; i < n; i++) {
@@ -196,7 +196,7 @@ sammenlikniger og ingen ombyttinger.
                         }
                         arr[j] = first;
                     }
-                }
+                }*/
             }
         }
     }
@@ -229,6 +229,8 @@ sammenlikniger og ingen ombyttinger.
 
     /// 7b)
     public static String flett(String... s) {
+        //String[] liste = new String[];
+        //Implementeres den 17. 09. 19
         throw new NotImplementedException();
     }
 
