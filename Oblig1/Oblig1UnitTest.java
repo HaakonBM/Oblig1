@@ -41,7 +41,11 @@ class Oblig1UnitTest {
 
     @org.junit.jupiter.api.Test
     void flett() {
-        assertEquals(true, false, "Implementer flett og denne testen");
+
+        String test = "aceg";
+        String testTo = "bdfh";
+        System.out.println(Oblig1.flett(test, testTo));
+        assertEquals("abcdefgh", Oblig1.flett(test, testTo), "Implementer flett og denne testen");
     }
 
     @org.junit.jupiter.api.Test

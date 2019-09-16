@@ -201,10 +201,30 @@ sammenlikniger og ingen ombyttinger.
         }
     }
 
+    //test
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
     public static String flett(String s, String t) {
-        throw new NotImplementedException();
+
+        String flettetOrd = "";
+
+        for (int i = 0; i < s.length() || i < t.length(); i++) {
+            if (i < s.length()) {
+                if (s.charAt(i) == ' ') {
+                    flettetOrd += "";
+                } else {
+                    flettetOrd += s.charAt(i);
+                }
+            }
+            if (i < t.length()) {
+                if (t.charAt(i) == ' ') {
+                    flettetOrd +=  "";
+                } else {
+                    flettetOrd += t.charAt(i);
+                }
+            }
+        }
+        return flettetOrd;
     }
 
     /// 7b)
