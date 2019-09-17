@@ -105,7 +105,6 @@ sammenlikniger og ingen ombyttinger.
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] arr) {
-        //public static void delsortering(Integer arr[]) {
 
         int n = arr.length;
 
@@ -184,19 +183,18 @@ sammenlikniger og ingen ombyttinger.
 
                     }
                     arr[0] = last;
-                } /*
-            } else if (n < 0) {
-                for (int i = 0; i > n; i--) {
+                }
+            }
+            else if (n < 0) {
+                    n = 0 - n;
                     for (int i = 0; i < n; i++) {
                         int j, first;
                         first = arr[0];
-
                         for (j = 0; j < arr.length - 1; j++) {
                             arr[j] = arr[j + 1];
                         }
-                        arr[j] = first;
+                        arr[j] = (char) first;
                     }
-                }*/
             }
         }
     }
