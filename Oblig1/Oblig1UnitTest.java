@@ -50,7 +50,14 @@ class Oblig1UnitTest {
 
     @org.junit.jupiter.api.Test
     void indekssortering() {
-        assertEquals(true, false, "Implementer indekssortering og denne testen");
+        String[] test = new String[4];
+        test[0] = "ri";
+        test[1] = "ig";
+        test[2] = "k";
+        test[3] = "t";
+        Oblig1.flett(test);
+        System.out.println(Oblig1.flett(test));
+        assertEquals("riktig", false, "Implementer indekssortering og denne testen");
     }
 
     @org.junit.jupiter.api.Test

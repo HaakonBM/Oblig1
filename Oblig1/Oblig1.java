@@ -2,6 +2,7 @@ package Oblig1;
 
 ////// Løsningsforslag Oblig 1 - 2019 ////////////////////////
 
+import com.sun.xml.internal.bind.v2.TODO;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Arrays;
@@ -39,7 +40,7 @@ sammenlikniger og ingen ombyttinger.
         int j = 1;
         int tempInt;
 
-        for (int i = 0; i < array.length - 1; i++ ) {
+        for (int i = 0; i < array.length - 1; i++) {
 
             if (array[i] > array[j]) {
                 tempInt = array[i];
@@ -49,7 +50,7 @@ sammenlikniger og ingen ombyttinger.
             j++;
         }
 
-        return array[array.length-1];
+        return array[array.length - 1];
     }
 
     public static int ombyttinger(int[] array) {
@@ -106,46 +107,45 @@ sammenlikniger og ingen ombyttinger.
     public static void delsortering(int[] arr) {
         //public static void delsortering(Integer arr[]) {
 
-            int n = arr.length;
+        int n = arr.length;
 
-            int l = 0, r = n - 1;
-            int k = 0;
+        int l = 0, r = n - 1;
+        int k = 0;
 
-            while (l < r) {
-                while (arr[l] % 2 != 0) {
-                    l++;
-                    k++;
-                }
-
-                while (arr[r] % 2 == 0 && l < r)
-                    r--;
-
-                if (l < r) {
-                    int x = arr[l];
-                    arr[l] = arr[r];
-                    arr[r] = x;
-                }
+        while (l < r) {
+            while (arr[l] % 2 != 0) {
+                l++;
+                k++;
             }
 
-            int p = arr.length;
+            while (arr[r] % 2 == 0 && l < r)
+                r--;
 
-            for (int i = 0; i < k-1; i++)
-                for (int j = 0; j < k - i - 1; j++)
-                    if (arr[j] > arr[j + 1]) {
-
-                        int t = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = t;
-                    }
-
-            for (int m = k; m < p-1; m++)
-                if (arr[m] > arr[m+1])
-                {
-                    int midlertidig = arr[m];
-                    arr[m] = arr[m+1];
-                    arr[m+1] = midlertidig;
-                }
+            if (l < r) {
+                int x = arr[l];
+                arr[l] = arr[r];
+                arr[r] = x;
+            }
         }
+
+        int p = arr.length;
+
+        for (int i = 0; i < k - 1; i++)
+            for (int j = 0; j < k - i - 1; j++)
+                if (arr[j] > arr[j + 1]) {
+
+                    int t = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = t;
+                }
+
+        for (int m = k; m < p - 1; m++)
+            if (arr[m] > arr[m + 1]) {
+                int midlertidig = arr[m];
+                arr[m] = arr[m + 1];
+                arr[m + 1] = midlertidig;
+            }
+    }
     //}
 
     ///// Oppgave 5 //////////////////////////////////////
@@ -218,7 +218,7 @@ sammenlikniger og ingen ombyttinger.
             }
             if (i < t.length()) {
                 if (t.charAt(i) == ' ') {
-                    flettetOrd +=  "";
+                    flettetOrd += "";
                 } else {
                     flettetOrd += t.charAt(i);
                 }
@@ -229,11 +229,28 @@ sammenlikniger og ingen ombyttinger.
 
     /// 7b)
     public static String flett(String... s) {
-        //String[] liste = new String[];
-        //Implementeres den 17. 09. 19
-        throw new NotImplementedException();
-    }
+        String flettOrd = "";
+        if (s.length == 0) {
+            return "";
+        }
 
+        int lengsteString = 0;
+        for (int i = 0; i < s.length; i++) {
+            if (lengsteString < s[i].length()) {
+                lengsteString = s[i].length();
+            }
+        }
+
+        for (int i = 0; i <  lengsteString; i++) {
+            for (int j = 0;  j < s.length; j++ ) {
+                if (i < s[j].length()) {
+                    flettOrd += s[j].charAt(i);
+                }
+            }
+        }
+
+        return flettOrd;
+    }
     ///// Oppgave 8 //////////////////////////////////////
     public static int[] indekssortering(int[] a) {
         throw new NotImplementedException();
@@ -242,7 +259,45 @@ sammenlikniger og ingen ombyttinger.
 
     ///// Oppgave 9 //////////////////////////////////////
     public static int[] tredjeMin(int[] a) {
-        throw new NotImplementedException();
+        /*
+        TODO
+        Startverdiene skal hentes fra oppgave 8
+        Bruker midlertidige verdier intill oppg. 8 er på plass
+         */
+        if (a.length < 3) {
+            throw new java.util.NoSuchElementException("Tabellen har for få elementer");
+        }
+
+        int[] treMinsteIndekser =  new int[3];
+
+        int minsteIndeks = a[0];
+        int nestMinsteIndeks = a[0];
+        int tredjeMinsteIndeks = a[0];
+
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] < tredjeMinsteIndeks) {
+                if (a[i] < minsteIndeks) {
+                    tredjeMinsteIndeks = nestMinsteIndeks;
+                    nestMinsteIndeks = minsteIndeks;
+                    minsteIndeks = i;
+                } else if (a[i] < nestMinsteIndeks) {
+                    tredjeMinsteIndeks = nestMinsteIndeks;
+                    nestMinsteIndeks = i;
+                } else {
+                    tredjeMinsteIndeks = i;
+                }
+
+            }
+        }
+
+        treMinsteIndekser[0] = minsteIndeks;
+        treMinsteIndekser[1] = nestMinsteIndeks;
+        treMinsteIndekser[2] = tredjeMinsteIndeks;
+        for (int i = 0; i< 3 ; i++) {
+            System.out.println(treMinsteIndekser[i]);
+        }
+
+        return treMinsteIndekser;
     }
 
     ///// Oppgave 10 //////////////////////////////////////
