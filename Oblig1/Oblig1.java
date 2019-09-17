@@ -252,9 +252,38 @@ sammenlikniger og ingen ombyttinger.
         return flettOrd;
     }
     ///// Oppgave 8 //////////////////////////////////////
-    public static int[] indekssortering(int[] a) {
-        throw new NotImplementedException();
-    }
+    //public static int[] indekssortering(int[] a) {
+    //    throw new NotImplementedException();
+    public static int[] indekssortering(int[] array) {
+            final int size = array.length;
+
+            final int[] result = new int[size];
+            for (int i = 0; i < size; i++)
+                result[i] = i;
+
+            boolean sorted;
+            do {
+                sorted = true;
+                int bubble = result[0];
+                for (int i = 0; i < size - 1; i++) {
+                    if (array[bubble] > array[result[i + 1]]) {
+                        result[i] = result[i + 1];
+                        result[i + 1] = bubble;
+                        sorted = false;
+                    } else {
+                        bubble = result[i + 1];
+                    }
+                }
+            } while (!sorted);
+
+            return result;
+
+
+        }// end Indeksering
+
+    //}// end class
+
+    //}
 
 
     ///// Oppgave 9 //////////////////////////////////////
@@ -262,7 +291,7 @@ sammenlikniger og ingen ombyttinger.
         /*
         TODO
         Startverdiene skal hentes fra oppgave 8
-        Bruker midlertidige verdier intill oppg. 8 er på plass
+        Trenger oppgave åtte
          */
         if (a.length < 3) {
             throw new java.util.NoSuchElementException("Tabellen har for få elementer");
@@ -270,34 +299,53 @@ sammenlikniger og ingen ombyttinger.
 
         int[] treMinsteIndekser =  new int[3];
 
-        int minsteIndeks = a[0];
-        int nestMinsteIndeks = a[0];
-        int tredjeMinsteIndeks = a[0];
+        treMinsteIndekser[0] = a[0];
+        treMinsteIndekser[1] = a[1];
+        treMinsteIndekser[2] = a[2];
+
+        int minsteTall = a[0];
+        int nestMinsteTall = a[1];
+        int tredjeMinsteTall = a[2];
+
+        int minsteIndeks = 0;
+        int nestMinsteIndeks = 1;
+        int tredjeMinsteIndeks = 2;
+        //egen sortering
+
 
         for (int i = 1; i < a.length; i++) {
-            if (a[i] < tredjeMinsteIndeks) {
-                if (a[i] < minsteIndeks) {
+
+            if (a[i] <= tredjeMinsteTall) {
+
+                if (a[i] < minsteTall) {
+                    tredjeMinsteTall = nestMinsteTall;
+                    nestMinsteTall = minsteTall;
+                    minsteTall = a[i];
+
                     tredjeMinsteIndeks = nestMinsteIndeks;
                     nestMinsteIndeks = minsteIndeks;
                     minsteIndeks = i;
-                } else if (a[i] < nestMinsteIndeks) {
+
+                } else if (a[i] < nestMinsteTall) {
+                    tredjeMinsteTall = nestMinsteTall;
+                    nestMinsteTall = a[i];
+
                     tredjeMinsteIndeks = nestMinsteIndeks;
                     nestMinsteIndeks = i;
                 } else {
+                    tredjeMinsteTall = a[i];
                     tredjeMinsteIndeks = i;
                 }
-
             }
         }
 
         treMinsteIndekser[0] = minsteIndeks;
         treMinsteIndekser[1] = nestMinsteIndeks;
         treMinsteIndekser[2] = tredjeMinsteIndeks;
-        for (int i = 0; i< 3 ; i++) {
-            System.out.println(treMinsteIndekser[i]);
-        }
 
         return treMinsteIndekser;
+
+
     }
 
     ///// Oppgave 10 //////////////////////////////////////

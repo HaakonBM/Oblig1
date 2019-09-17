@@ -50,18 +50,13 @@ class Oblig1UnitTest {
 
     @org.junit.jupiter.api.Test
     void indekssortering() {
-        String[] test = new String[4];
-        test[0] = "ri";
-        test[1] = "ig";
-        test[2] = "k";
-        test[3] = "t";
-        Oblig1.flett(test);
-        System.out.println(Oblig1.flett(test));
-        assertEquals("riktig", false, "Implementer indekssortering og denne testen");
+        assertEquals(true, false, "Implementer indekssortering og denne testen");
     }
 
     @org.junit.jupiter.api.Test
     void tredjeMin() {
+        int[] demo = {5, 3 ,1, 5,6,7,22,};
+        Oblig1.tredjeMin(demo);
         assertEquals(true, false, "Implementer tredjeMin og denne testen");
     }
 
