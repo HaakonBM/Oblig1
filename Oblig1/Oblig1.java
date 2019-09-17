@@ -145,7 +145,6 @@ sammenlikniger og ingen ombyttinger.
                 arr[m + 1] = midlertidig;
             }
     }
-    //}
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
