@@ -1,7 +1,7 @@
 # Oblig1
 Studenter:
 
-Haakon Molvig           s******
+Haakon Molvig           s306458
 Zeray Tewelde Kahsay    s327667
 Morten Sydow Mo         s331406
 
@@ -38,4 +38,4 @@ Oppgave 9
 Haakon
 
 Oppgave 10
-
+Haakon
