@@ -307,37 +307,48 @@ sammenlikniger og ingen ombyttinger.
         if (a.length < 3) {
             throw new java.util.NoSuchElementException("Tabellen har for få elementer");
         }
+        
 
-        int[] treMinsteIndekser =  new int[3];
+        int[] indeksTreMinste =  new int[3];
+
+        int minsteTall = 0;
+        int nestMinsteTall = 0;
+        int tredjeMinsteTall = 0;
 
         int minsteIndeks = a[0];
         int nestMinsteIndeks = a[0];
         int tredjeMinsteIndeks = a[0];
 
         for (int i = 1; i < a.length; i++) {
-            if (a[i] < tredjeMinsteIndeks) {
-                if (a[i] < minsteIndeks) {
+            if (a[i] < tredjeMinsteTall) {
+                if (a[i] < minsteTall) {
                     tredjeMinsteIndeks = nestMinsteIndeks;
                     nestMinsteIndeks = minsteIndeks;
                     minsteIndeks = i;
-                } else if (a[i] < nestMinsteIndeks) {
+
+                    tredjeMinsteTall = nestMinsteTall;
+                    nestMinsteTall = minsteTall;
+                    minsteTall = a[i];
+                } else if (a[i] < nestMinsteTall) {
                     tredjeMinsteIndeks = nestMinsteIndeks;
                     nestMinsteIndeks = i;
+
+                    tredjeMinsteTall = nestMinsteTall;
+                    nestMinsteTall = a[i];
                 } else {
                     tredjeMinsteIndeks = i;
+
+                    tredjeMinsteTall = a[i];
                 }
 
             }
         }
 
-        treMinsteIndekser[0] = minsteIndeks;
-        treMinsteIndekser[1] = nestMinsteIndeks;
-        treMinsteIndekser[2] = tredjeMinsteIndeks;
-        for (int i = 0; i< 3 ; i++) {
-            System.out.println(treMinsteIndekser[i]);
-        }
+        indeksTreMinste[0] = minsteIndeks;
+        indeksTreMinste[1] = nestMinsteIndeks;
+        indeksTreMinste[2] = tredjeMinsteIndeks;
 
-        return treMinsteIndekser;
+        return indeksTreMinste;
     }
 
     ///// Oppgave 10 //////////////////////////////////////
