@@ -20,15 +20,10 @@ public class Oblig1 {
 - Når blir det flest ombyttinger?
 Det blir flest ombyttinger når den største verdien ligger først. Da vil den flyttes bakover ved hver eneste
 sammenligning. Det vil bli n -1 sammenligninger og like mange ombyttinger
-
 - Når blir det færrest ombyttinger?
 Det blir færrest ombyttinger når tabellen er allerede er sortert i stigende rekkefølge. Da vil ha n- 1
 sammenlikniger og ingen ombyttinger.
-
 - Hvor mange ombyttiger er det gjennomsnittlig?
-
-
-
  */
 
     public static int maks(int[] array) {
@@ -130,7 +125,6 @@ sammenlikniger og ingen ombyttinger.
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] arr) {
-        //public static void delsortering(Integer arr[]) {
 
         int n = arr.length;
 
@@ -171,7 +165,6 @@ sammenlikniger og ingen ombyttinger.
                 arr[m + 1] = midlertidig;
             }
     }
-    //}
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
@@ -212,17 +205,15 @@ sammenlikniger og ingen ombyttinger.
                 }
             }
             else if (n < 0) {
-                    n = 0 - n;
-                    for (int i = 0; i < n; i++) {
-                        int j, first;
-                        first = arr[0];
-
-                        for (j = 0; j < arr.length - 1; j++) {
-                            arr[j] = arr[j + 1];
-                        }
-                        arr[j] = (char) first;
+                n = 0 - n;
+                for (int i = 0; i < n; i++) {
+                    int j, first;
+                    first = arr[0];
+                    for (j = 0; j < arr.length - 1; j++) {
+                        arr[j] = arr[j + 1];
                     }
-                }*/
+                    arr[j] = (char) first;
+                }
             }
         }
     }
@@ -319,41 +310,20 @@ sammenlikniger og ingen ombyttinger.
 
         int[] treMinsteIndekser =  new int[3];
 
-        treMinsteIndekser[0] = a[0];
-        treMinsteIndekser[1] = a[1];
-        treMinsteIndekser[2] = a[2];
-
-        int minsteTall = a[0];
-        int nestMinsteTall = a[1];
-        int tredjeMinsteTall = a[2];
-
-        int minsteIndeks = 0;
-        int nestMinsteIndeks = 1;
-        int tredjeMinsteIndeks = 2;
-        //egen sortering
-
+        int minsteIndeks = a[0];
+        int nestMinsteIndeks = a[0];
+        int tredjeMinsteIndeks = a[0];
 
         for (int i = 1; i < a.length; i++) {
-
-            if (a[i] <= tredjeMinsteTall) {
-
-                if (a[i] < minsteTall) {
-                    tredjeMinsteTall = nestMinsteTall;
-                    nestMinsteTall = minsteTall;
-                    minsteTall = a[i];
-
+            if (a[i] < tredjeMinsteIndeks) {
+                if (a[i] < minsteIndeks) {
                     tredjeMinsteIndeks = nestMinsteIndeks;
                     nestMinsteIndeks = minsteIndeks;
                     minsteIndeks = i;
-
-                } else if (a[i] < nestMinsteTall) {
-                    tredjeMinsteTall = nestMinsteTall;
-                    nestMinsteTall = a[i];
-
+                } else if (a[i] < nestMinsteIndeks) {
                     tredjeMinsteIndeks = nestMinsteIndeks;
                     nestMinsteIndeks = i;
                 } else {
-                    tredjeMinsteTall = a[i];
                     tredjeMinsteIndeks = i;
                 }
 
@@ -368,20 +338,39 @@ sammenlikniger og ingen ombyttinger.
         }
 
         return treMinsteIndekser;
-
-
     }
 
     ///// Oppgave 10 //////////////////////////////////////
     public static int bokstavNr(char bokstav) {
-        throw new NotImplementedException();
+        return bokstav;
     }
 
     public static boolean inneholdt(String a, String b) {
-        throw new NotImplementedException();
+        int[] bokstaver = new int[256];
+        for (int i = 0; i < bokstaver.length; i++) {
+            bokstaver[i] = 0;
+        }
+
+        String ordA = a;
+        String ordB = b;
+
+        for (int i = 0; i < ordA.length(); i++) {
+            bokstaver[bokstavNr(ordA.charAt(i))] += 1;
+        }
+        for (int i = 0; i < ordB.length(); i++) {
+            bokstaver[bokstavNr(ordB.charAt(i))] -= 1;
+        }
+
+
+        for (int i = 0; i< bokstaver.length; i ++) {
+            if (bokstaver[i] > 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
-  // Oblig1
+    // Oblig1
 
     //***********************************************************
     //Hjelpemetoder fra kompendiet
