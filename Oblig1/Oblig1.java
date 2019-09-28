@@ -5,9 +5,7 @@ package Oblig1;
 import com.sun.xml.internal.bind.v2.TODO;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.util.Arrays;
-import java.util.NoSuchElementException;
-import java.util.Random;
+import java.util.*;
 
 
 public class Oblig1 {
@@ -98,30 +96,31 @@ sammenlikniger og ingen ombyttinger.
 
 
     ///// Oppgave 3 //////////////////////////////////////
+
     public static int antallUlikeUsortert(int[] array) {
 
         if (array.length == 0) {
             return 0;
         } else {
 
-            int antallUnikeTall = array.length;
-            int counter = 0;
+                int antallUnikeTall = 0;
+                int antallLike = 1;
 
-            for (int i = 0; i < array.length; i++) {
-
-                for (int j = array.length - 1; j > i; j--) {
-
-                    if (array[i] == array[j]) {
-                        counter++;
+                for (int i = 0; i < array.length; i++) {
+                    for (int j = i +1; j < array.length; j++) {
+                        if (array[i] == array[j]) {
+                            antallLike++;
+                        }
                     }
+                    if (antallLike == 1) {
+                        antallUnikeTall++;
+                    }
+                    antallLike = 1;
                 }
-                antallUnikeTall = antallUnikeTall - counter;
-                counter = 0;
+                return antallUnikeTall;
             }
-
-            return antallUnikeTall;
         }
-    }
+
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] arr) {
@@ -269,6 +268,8 @@ sammenlikniger og ingen ombyttinger.
         return flettOrd;
     }
     ///// Oppgave 8 //////////////////////////////////////
+
+
     public static int[] indekssortering(int[] array) {
         final int size = array.length;
 
@@ -307,7 +308,7 @@ sammenlikniger og ingen ombyttinger.
         if (a.length < 3) {
             throw new java.util.NoSuchElementException("Tabellen har for få elementer");
         }
-        
+
 
         int[] indeksTreMinste =  new int[3];
 

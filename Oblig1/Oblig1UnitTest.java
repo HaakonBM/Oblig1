@@ -26,6 +26,10 @@ class Oblig1UnitTest {
 
     @org.junit.jupiter.api.Test
     void antallUlikeUsortert() {
+        int[] arrayEn = {1, 2, 3,4 ,5, 6, 7, 8, 9}; //Ingen unike
+        int[] arrayTo = {1, 2, 3, 2, 5, 2, 7, 8, 9};// 7 unike
+        System.out.println("9 unike " + Oblig1.antallUlikeUsortert(arrayEn));
+        System.out.println("7 Unike " + Oblig1.antallUlikeUsortert(arrayTo));
         assertEquals(true, false, "Implementer antallUlikeUsortert og denne testen");
     }
 

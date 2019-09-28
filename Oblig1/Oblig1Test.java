@@ -153,7 +153,8 @@ public class Oblig1Test {
             antallFeil++;
         }
 
-        if (Oblig1.antallUlikeUsortert(a) != 0
+        if (
+                Oblig1.antallUlikeUsortert(a) != 0
                 || Oblig1.antallUlikeUsortert(b) != 1
                 || Oblig1.antallUlikeUsortert(c) != 1
                 || Oblig1.antallUlikeUsortert(d) != 6
