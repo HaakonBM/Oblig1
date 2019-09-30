@@ -54,6 +54,10 @@ class Oblig1UnitTest {
 
     @org.junit.jupiter.api.Test
     void indekssortering() {
+        int[] array = {1, 2, 3, 4, 5}; //1 2 3 4 5
+        int[] arrayTo = {5, 4, 3, 2, 1}; //5 4 3 2 1
+        Oblig1.indekssortering(array);
+        Oblig1.indekssortering(arrayTo);
         assertEquals(true, false, "Implementer indekssortering og denne testen");
     }
 

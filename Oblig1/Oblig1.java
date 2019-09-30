@@ -268,88 +268,200 @@ sammenlikniger og ingen ombyttinger.
         return flettOrd;
     }
     ///// Oppgave 8 //////////////////////////////////////
+    /*
+    //burde bruke clone
+    public static int[] indekssortering(int[] array) {
+        if (array.length == 0) {
+            int[] arr = new int[0];
+            return arr;
+        } else {
+            int[] arrayCopy = array.clone();
+            int[] smallIndex = array.clone();
+
+            for (int i = 0; i < arrayCopy.length; i++) {
+                for (int j = i + 1; j < arrayCopy.length; j++) {
+                    if (arrayCopy[j] < arrayCopy[i]) {
+                        int temp = arrayCopy[i];
+                        arrayCopy [i] = arrayCopy[j];
+                        arrayCopy[j] = temp;
+                        smallIndex[i] = j;
+                    }
+                }
+            }
+            System.out.println("Skriver ut array: ");
+            for (int i : smallIndex) {
+                System.out.print(i + " + ");
+            }
+            System.out.println("\n");
+            return smallIndex;
+        }
+
+    }
+
+*/
 
 
     public static int[] indekssortering(int[] array) {
-        final int size = array.length;
 
-        final int[] result = new int[size];
-        for (int i = 0; i < size; i++)
-            result[i] = i;
+        if (array.length == 0) {
+            int[] zeroArray = new int[0];
+            return zeroArray;
+        } else {
+            final int size = array.length;
 
-        boolean sorted;
-        do {
-            sorted = true;
-            int bubble = result[0];
-            for (int i = 0; i < size - 1; i++) {
-                if (array[bubble] > array[result[i + 1]]) {
-                    result[i] = result[i + 1];
-                    result[i + 1] = bubble;
-                    sorted = false;
-                } else {
-                    bubble = result[i + 1];
+            final int[] result = new int[size];
+            for (int i = 0; i < size; i++)
+                result[i] = i;
+
+            boolean sorted;
+            do {
+                sorted = true;
+                int bubble = result[0];
+                for (int i = 0; i < size - 1; i++) {
+                    if (array[bubble] > array[result[i + 1]]) {
+                        result[i] = result[i + 1];
+                        result[i + 1] = bubble;
+                        sorted = false;
+                    } else {
+                        bubble = result[i + 1];
+                    }
                 }
-            }
-        } while (!sorted);
+            } while (!sorted);
 
-        return result;
+            return result;
 
-
+        }
     }// end Indeksering
 
 
     ///// Oppgave 9 //////////////////////////////////////
     public static int[] tredjeMin(int[] a) {
-        /*
-        TODO
-        Startverdiene skal hentes fra oppgave 8
-        Bruker midlertidige verdier intill oppg. 8 er på plass
-         */
+        //Virker men er ineffektiv
+
         if (a.length < 3) {
-            throw new java.util.NoSuchElementException("Tabellen har for få elementer");
+            throw new NoSuchElementException("Tabellen har for få elementer");
+        } else {
+            /*
         }
-
-
-        int[] indeksTreMinste =  new int[3];
-
-        int minsteTall = 0;
-        int nestMinsteTall = 0;
-        int tredjeMinsteTall = 0;
-
-        int minsteIndeks = a[0];
-        int nestMinsteIndeks = a[0];
-        int tredjeMinsteIndeks = a[0];
-
-        for (int i = 1; i < a.length; i++) {
-            if (a[i] < tredjeMinsteTall) {
-                if (a[i] < minsteTall) {
-                    tredjeMinsteIndeks = nestMinsteIndeks;
-                    nestMinsteIndeks = minsteIndeks;
-                    minsteIndeks = i;
-
-                    tredjeMinsteTall = nestMinsteTall;
-                    nestMinsteTall = minsteTall;
-                    minsteTall = a[i];
-                } else if (a[i] < nestMinsteTall) {
-                    tredjeMinsteIndeks = nestMinsteIndeks;
-                    nestMinsteIndeks = i;
-
-                    tredjeMinsteTall = nestMinsteTall;
-                    nestMinsteTall = a[i];
-                } else {
-                    tredjeMinsteIndeks = i;
-
-                    tredjeMinsteTall = a[i];
-                }
-
+            int[] arrayCopy = a.clone();
+            /*
+            System.out.println("Array: ");
+            for(int i : arrayCopy) {
+                System.out.print(i + " + ");
             }
+            System.out.println("\n");
+            */
+            /*
+            int[] arraySortert = indekssortering(arrayCopy);
+            */
+            /*
+            System.out.println("Sortert indeks: ");
+            for(int i : arraySortert) {
+                System.out.print(i + " + ");
+            }
+            System.out.println("\n");
+            */
+
+            /*
+            int[] threeMinIndex = new int[3];
+            threeMinIndex[0] = arraySortert[0];
+            threeMinIndex[1] = arraySortert[1];
+            threeMinIndex[2] = arraySortert[2];
+            return threeMinIndex;
+
+        }
+        */
+        /*
+            //Ny metode, mer effektivv?
+            int[] arrayCopy = a.clone();
+            int[] arrayIndex = new int[arrayCopy.length];
+            int[] threeMinIndex = new int[3];
+
+            threeMinIndex[0] = arrayCopy[0];
+            threeMinIndex[1] = arrayCopy[1];
+            threeMinIndex[2] = arrayCopy[2];
+
+            threeMinIndex = indekssortering(threeMinIndex);
+
+            return threeMinIndex;
+        */
+        //Kladd
+        /*
+            int[] arrayCopy = a.clone();
+            int[] arrayIndex = new int[arrayCopy.length];
+            int[] threeMinIndex = new int[3];
+
+            threeMinIndex[0] = arrayCopy[0];
+            threeMinIndex[1] = arrayCopy[1];
+            threeMinIndex[2] = arrayCopy[2];
+
+            threeMinIndex = indekssortering(threeMinIndex);
+        */
+
+        //NY TESTt
+
+            //////////////////////////////////////////////////
+            /*
+            int[] returnArray = {0,1,2};
+
+
+            returnArray[0] = a[returnArray[0]];
+            returnArray[1] = a[returnArray[1]];
+            returnArray[2] = a[returnArray[2]];
+
+            returnArray = indekssortering(returnArray);
+
+
+            //hjelpevariabler
+            int tredjeMinst = returnArray[2];
+            int nestMin = returnArray[1];
+            int min = returnArray[0];
+            */
+            ////////////////////////////////////
+
+            int[] arrayCopy = a.clone();
+            int[] threeMinIndex = {0, 1, 2};//new int[3];
+
+            threeMinIndex[0] = arrayCopy[threeMinIndex[0]];
+            threeMinIndex[1] = arrayCopy[threeMinIndex[1]];
+            threeMinIndex[2] = arrayCopy[threeMinIndex[2]];
+
+            threeMinIndex = indekssortering(threeMinIndex);
+
+            int minNumber = threeMinIndex[0];
+            int secondMinNumber = threeMinIndex[1];
+            int thirdMinNumber = threeMinIndex[2];
+
+
+
+            for (int i = 3; i < arrayCopy.length; i++) {
+                if (arrayCopy[i] < thirdMinNumber) {
+                    if (arrayCopy[i] < minNumber) {
+                            thirdMinNumber = secondMinNumber;
+                            secondMinNumber = minNumber;
+                            minNumber = arrayCopy[i];
+
+                            threeMinIndex[2] = threeMinIndex[1];
+                            threeMinIndex[1] = threeMinIndex[0];
+                            threeMinIndex[0] = i;
+                    } else if (arrayCopy[i] < secondMinNumber) {
+                        thirdMinNumber = secondMinNumber;
+                        secondMinNumber = arrayCopy[i];
+
+                        threeMinIndex[2] = threeMinIndex[1];
+                        threeMinIndex[1] = i;
+                    } else {
+                        thirdMinNumber = arrayCopy[i];
+
+                        threeMinIndex[2] = i;
+                    }
+                }
+            }
+            return threeMinIndex;
+            
         }
 
-        indeksTreMinste[0] = minsteIndeks;
-        indeksTreMinste[1] = nestMinsteIndeks;
-        indeksTreMinste[2] = tredjeMinsteIndeks;
 
-        return indeksTreMinste;
     }
 
     ///// Oppgave 10 //////////////////////////////////////
@@ -407,5 +519,19 @@ sammenlikniger og ingen ombyttinger.
         int temp = a[i];
         a[i] = a[j];
         a[j] = temp;
+    }
+
+    public static int[] sortMinToMax (int[] array) {
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[i] > array[j]) {
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+        return array;
     }
 }
