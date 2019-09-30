@@ -136,10 +136,8 @@ sammenlikniger og ingen ombyttinger.
                 l++;
                 k++;
             }
-
             while (arr[r] % 2 == 0 && l < r)
                 r--;
-
             if (l < r) {
                 int x = arr[l];
                 arr[l] = arr[r];
@@ -188,9 +186,8 @@ sammenlikniger og ingen ombyttinger.
 
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int n) {
-        if (a.length != 0) {
             char[] arr = a;
-            if (n > 0) {
+            if (a.length != 0 && n > 0) {
                 for (int i = 0; i < n; i++) {
                     int j;
 
@@ -204,7 +201,7 @@ sammenlikniger og ingen ombyttinger.
                     arr[0] = last;
                 }
             }
-            else if (n < 0) {
+            else if (a.length != 0 && n < 0) {
                 n = 0 - n;
                 for (int i = 0; i < n; i++) {
                     int j, first;
@@ -215,7 +212,6 @@ sammenlikniger og ingen ombyttinger.
                     arr[j] = (char) first;
                 }
             }
-        }
     }
 
     //test
