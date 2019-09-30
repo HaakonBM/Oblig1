@@ -337,83 +337,6 @@ sammenlikniger og ingen ombyttinger.
         if (a.length < 3) {
             throw new NoSuchElementException("Tabellen har for få elementer");
         } else {
-            /*
-        }
-            int[] arrayCopy = a.clone();
-            /*
-            System.out.println("Array: ");
-            for(int i : arrayCopy) {
-                System.out.print(i + " + ");
-            }
-            System.out.println("\n");
-            */
-            /*
-            int[] arraySortert = indekssortering(arrayCopy);
-            */
-            /*
-            System.out.println("Sortert indeks: ");
-            for(int i : arraySortert) {
-                System.out.print(i + " + ");
-            }
-            System.out.println("\n");
-            */
-
-            /*
-            int[] threeMinIndex = new int[3];
-            threeMinIndex[0] = arraySortert[0];
-            threeMinIndex[1] = arraySortert[1];
-            threeMinIndex[2] = arraySortert[2];
-            return threeMinIndex;
-
-        }
-        */
-        /*
-            //Ny metode, mer effektivv?
-            int[] arrayCopy = a.clone();
-            int[] arrayIndex = new int[arrayCopy.length];
-            int[] threeMinIndex = new int[3];
-
-            threeMinIndex[0] = arrayCopy[0];
-            threeMinIndex[1] = arrayCopy[1];
-            threeMinIndex[2] = arrayCopy[2];
-
-            threeMinIndex = indekssortering(threeMinIndex);
-
-            return threeMinIndex;
-        */
-        //Kladd
-        /*
-            int[] arrayCopy = a.clone();
-            int[] arrayIndex = new int[arrayCopy.length];
-            int[] threeMinIndex = new int[3];
-
-            threeMinIndex[0] = arrayCopy[0];
-            threeMinIndex[1] = arrayCopy[1];
-            threeMinIndex[2] = arrayCopy[2];
-
-            threeMinIndex = indekssortering(threeMinIndex);
-        */
-
-        //NY TESTt
-
-            //////////////////////////////////////////////////
-            /*
-            int[] returnArray = {0,1,2};
-
-
-            returnArray[0] = a[returnArray[0]];
-            returnArray[1] = a[returnArray[1]];
-            returnArray[2] = a[returnArray[2]];
-
-            returnArray = indekssortering(returnArray);
-
-
-            //hjelpevariabler
-            int tredjeMinst = returnArray[2];
-            int nestMin = returnArray[1];
-            int min = returnArray[0];
-            */
-            ////////////////////////////////////
 
             int[] arrayCopy = a.clone();
             int[] threeMinIndex = {0, 1, 2};//new int[3];
@@ -428,33 +351,30 @@ sammenlikniger og ingen ombyttinger.
             int secondMinNumber = threeMinIndex[1];
             int thirdMinNumber = threeMinIndex[2];
 
-
-
             for (int i = 3; i < arrayCopy.length; i++) {
-                if (arrayCopy[i] < thirdMinNumber) {
-                    if (arrayCopy[i] < minNumber) {
-                            thirdMinNumber = secondMinNumber;
-                            secondMinNumber = minNumber;
-                            minNumber = arrayCopy[i];
-
-                            threeMinIndex[2] = threeMinIndex[1];
-                            threeMinIndex[1] = threeMinIndex[0];
-                            threeMinIndex[0] = i;
-                    } else if (arrayCopy[i] < secondMinNumber) {
+                if (arrayCopy[i] < arrayCopy[thirdMinNumber]) {
+                    if (arrayCopy[i] < arrayCopy[minNumber]) {
                         thirdMinNumber = secondMinNumber;
-                        secondMinNumber = arrayCopy[i];
+                        secondMinNumber = minNumber;
+                        minNumber = i;
 
-                        threeMinIndex[2] = threeMinIndex[1];
-                        threeMinIndex[1] = i;
+                    } else if (arrayCopy[i] < arrayCopy[secondMinNumber]) {
+                        thirdMinNumber = secondMinNumber;
+                        secondMinNumber = i;
+
                     } else {
-                        thirdMinNumber = arrayCopy[i];
+                        thirdMinNumber = i;
 
-                        threeMinIndex[2] = i;
                     }
                 }
             }
+
+            threeMinIndex[2] = thirdMinNumber;
+            threeMinIndex[1] = secondMinNumber;
+            threeMinIndex[0] = minNumber;
+
             return threeMinIndex;
-            
+
         }
 
 
