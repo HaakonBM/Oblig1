@@ -35,6 +35,12 @@ class Oblig1UnitTest {
 
     @org.junit.jupiter.api.Test
     void delsortering() {
+        int[] arrayEn = {1, 2, 3, 4, 5, 6};
+        int[] arrayTo = {6, 5, 4, 3, 2, 1};
+        int[] arrayTre = {3, 1, 5, 9, 7};
+        int[] arrayFire = {6, 2, 8, 2, 12};
+        int[] arrayFem = {6, 7, 8, 1, 12};
+        Oblig1.delsortering(arrayEn);
         assertEquals(true, false, "Implementer delsortering og denne testen");
     }
 

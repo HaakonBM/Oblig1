@@ -65,23 +65,23 @@ sammenlikniger og ingen ombyttinger.
     }
 
     ///// Oppgave 2 //////////////////////////////////////
-    public static int antallUlikeSortert(int [] a){
+    public static int antallUlikeSortert(int[] a) {
 
-        int antall=0;
-        int tall =0; // variablen tall står for hver element i tabellen,
+        int antall = 0;
+        int tall = 0; // variablen tall står for hver element i tabellen,
         //men variablen må starte fra 0, i tilfelle vi har 0 i tabellen
         // tall = {0,3,3,4,5,6,7,7,7,8} og a = {3,3,4,5,6,7,7,7,8}
-        for (int i= 0; i < a.length; i++ ){
+        for (int i = 0; i < a.length; i++) {
 
             // if statmentene retunerer  hver tall som ikke er like. dvs tall = a [i]
-            if (a [i] >= tall ) {
-                if (a [i]!= tall){
+            if (a[i] >= tall) {
+                if (a[i] != tall) {
                     antall++;
                 }//end inner if
             }// end outer if
 
             // i tilfelle tabellen er tom
-            else if (a.length < 1){
+            else if (a.length < 1) {
                 return 0;
             }// end if
 
@@ -89,7 +89,7 @@ sammenlikniger og ingen ombyttinger.
             else {
                 throw new IllegalStateException(" Tabellen er ikke stigende soretert ");
             }
-            tall = a [i];
+            tall = a[i];
         }// end for
         return antall;
     }// end antall ulike sortering
@@ -103,65 +103,52 @@ sammenlikniger og ingen ombyttinger.
             return 0;
         } else {
 
-                int antallUnikeTall = 0;
-                int antallLike = 1;
+            int antallUnikeTall = 0;
+            int antallLike = 1;
 
-                for (int i = 0; i < array.length; i++) {
-                    for (int j = i +1; j < array.length; j++) {
-                        if (array[i] == array[j]) {
-                            antallLike++;
-                        }
+            for (int i = 0; i < array.length; i++) {
+                for (int j = i + 1; j < array.length; j++) {
+                    if (array[i] == array[j]) {
+                        antallLike++;
                     }
-                    if (antallLike == 1) {
-                        antallUnikeTall++;
-                    }
-                    antallLike = 1;
                 }
-                return antallUnikeTall;
+                if (antallLike == 1) {
+                    antallUnikeTall++;
+                }
+                antallLike = 1;
             }
+            return antallUnikeTall;
         }
+    }
 
 
     ///// Oppgave 4 //////////////////////////////////////
-    public static void delsortering(int[] arr) {
+    //public static void delsortering(int[] arr) {
 
-        int n = arr.length;
+    public static void delsortering(int[] a) {
+        int lengde = a.length;
+        int v = 0, h = lengde - 1;
 
-        int l = 0, r = n - 1;
-        int k = 0;
+        if (a.length == 0) return;
 
-        while (l < r) {
-            while (arr[l] % 2 != 0) {
-                l++;
-                k++;
-            }
-            while (arr[r] % 2 == 0 && l < r)
-                r--;
-            if (l < r) {
-                int x = arr[l];
-                arr[l] = arr[r];
-                arr[r] = x;
+        while (v <= h) {
+            if (((a[v] % 2) == 0) && !((a[h] % 2) == 0)) {
+                bytt(a, v++, h--);
+            } else if ((a[v] % 2) == 0) {
+                h--;
+            } else if (!((a[h] % 2) == 0)) {
+                v++;
+            } else if (!((a[v] % 2) == 0) && ((a[h] % 2) == 0)) {
+                v++;
+                h--;
             }
         }
+        kvikksortering(a, 0, v);
+        kvikksortering(a, v, lengde);
 
-        int p = arr.length;
-
-        for (int i = 0; i < k - 1; i++)
-            for (int j = 0; j < k - i - 1; j++)
-                if (arr[j] > arr[j + 1]) {
-
-                    int t = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = t;
-                }
-
-        for (int m = k; m < p - 1; m++)
-            if (arr[m] > arr[m + 1]) {
-                int midlertidig = arr[m];
-                arr[m] = arr[m + 1];
-                arr[m + 1] = midlertidig;
-            }
     }
+
+
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
@@ -264,37 +251,6 @@ sammenlikniger og ingen ombyttinger.
         return flettOrd;
     }
     ///// Oppgave 8 //////////////////////////////////////
-    /*
-    //burde bruke clone
-    public static int[] indekssortering(int[] array) {
-        if (array.length == 0) {
-            int[] arr = new int[0];
-            return arr;
-        } else {
-            int[] arrayCopy = array.clone();
-            int[] smallIndex = array.clone();
-
-            for (int i = 0; i < arrayCopy.length; i++) {
-                for (int j = i + 1; j < arrayCopy.length; j++) {
-                    if (arrayCopy[j] < arrayCopy[i]) {
-                        int temp = arrayCopy[i];
-                        arrayCopy [i] = arrayCopy[j];
-                        arrayCopy[j] = temp;
-                        smallIndex[i] = j;
-                    }
-                }
-            }
-            System.out.println("Skriver ut array: ");
-            for (int i : smallIndex) {
-                System.out.print(i + " + ");
-            }
-            System.out.println("\n");
-            return smallIndex;
-        }
-
-    }
-
-*/
 
 
     public static int[] indekssortering(int[] array) {
@@ -436,18 +392,57 @@ sammenlikniger og ingen ombyttinger.
         a[i] = a[j];
         a[j] = temp;
     }
-
-    public static int[] sortMinToMax (int[] array) {
-
-        for (int i = 0; i < array.length; i++) {
-            for (int j = i + 1; j < array.length; j++) {
-                if (array[i] > array[j]) {
-                    int temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
-                }
-            }
-        }
-        return array;
+    private static void kvikksortering0(int[] a, int v, int h)  // en privat metode
+    {
+        if (v >= h) return;  // a[v:h] er tomt eller har maks ett element
+        int k = sParter0(a, v, h, (v + h)/2);  // bruker midtverdien
+        kvikksortering0(a, v, k - 1);     // sorterer intervallet a[v:k-1]
+        kvikksortering0(a, k + 1, h);     // sorterer intervallet a[k+1:h]
     }
+
+    public static void kvikksortering(int[] a, int fra, int til) // a[fra:til>
+    {
+        fratilKontroll(a.length, fra, til);  // sjekker når metoden er offentlig
+        kvikksortering0(a, fra, til - 1);  // v = fra, h = til - 1
+    }
+
+    public static void kvikksortering(int[] a)   // sorterer hele tabellen
+    {
+        kvikksortering0(a, 0, a.length - 1);
+
+    }
+    private static int sParter0(int[] a, int v, int h, int indeks)
+    {
+        bytt(a, indeks, h);           // skilleverdi a[indeks] flyttes bakerst
+        int pos = parter0(a, v, h - 1, a[h]);  // partisjonerer a[v:h - 1]
+        bytt(a, pos, h);              // bytter for å få skilleverdien på rett plass
+        return pos;                   // returnerer posisjonen til skilleverdien
+    }
+    private static int parter0(int[] a, int v, int h, int skilleverdi) {
+        while (true)                                  // stopper når v > h
+        {
+            while (v <= h && a[v] < skilleverdi) v++;   // h er stoppverdi for v
+            while (v <= h && a[h] >= skilleverdi) h--;  // v er stoppverdi for h
+
+            if (v < h) bytt(a, v++, h--);                 // bytter om a[v] og a[h]
+            else return v;  // a[v] er nåden første som ikke er mindre enn skilleverdi
+        }
+
+    }
+    public static void fratilKontroll(int tablengde, int fra, int til)
+    {
+        if (fra < 0)                                  // fra er negativ
+            throw new ArrayIndexOutOfBoundsException
+                    ("fra(" + fra + ") er negativ!");
+
+        if (til > tablengde)                          // til er utenfor tabellen
+            throw new ArrayIndexOutOfBoundsException
+                    ("til(" + til + ") > tablengde(" + tablengde + ")");
+
+        if (fra > til)                                // fra er større enn til
+            throw new IllegalArgumentException
+                    ("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
+    }
+
+
 }
